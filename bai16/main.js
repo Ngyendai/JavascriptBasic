@@ -1,72 +1,173 @@
-// 1. Toán từ số học
-console.log(5 + 2); // 7
-console.log(5 - 2); // 3
-console.log(5 * 2); // 10
-console.log(5 / 2); // 2.5
-console.log(5 % 2); // 1 (số dư)
-console.log(5 ** 2); // 25 (5 lũy thừa 2)
-
-// lưu ý 
-console.log("5" + 2); // "52"
-console.log("5" - 2); // 3
-console.log("5" * 2); // 10
-console.log("5" / 2); // 2.5
-console.log("5a" % "2"); // NaN
-console.log("5b" ** "2"); // NaN
+// Cú pháp hàm
+// function functionName([parameter1], [parameter2],...) {
+//     statement1;
+//     statement2;
+//     ...
+//   }
 
 
-// 2. Toán tử string 
-console.log("hello" + " javascript"); // hello javascript
-console.log(1 + "2"); // 12
-console.log("1" + true); // 1true
+function sayHello() {
+    console.log("Hello from kungfutech.edu.vn");
+  }
 
-// 3. Toán tử chuyển đổi kiểu dữ liệu thành number
-// Không ảnh hưởng đến số
-console.log(+1); // 1
+  function sayHello() {
+    console.log("Hello from kungfutech.edu.vn");
+  }
+  
+  sayHello();
+  // Hello from kungfutech.edu.vns
 
-// Chuyển đổi các kiểu dữ liệu khác thành số
-console.log(+true); // 1
-console.log(+false); // 0
-console.log(+"abc"); // NaN
-console.log(+""); // 0
-console.log(+undefined); // NaN
-console.log(+null); // 0
-console.log(+{ x: 1 }); // NaN
+  // Biến cục bộ trong hàm 
+  function sayHello() {
+    const message = "Hello from kungfutech.edu.vn";
+    console.log(message);
+  }
+  
+  sayHello(); // Hello from kungfutech.edu.vn
+  
+  console.log(message); // Uncaught ReferenceError: message is not defined
 
-// 4. Toán tử gán
-let x = 1; // gán giá trị cho biến
-const message = "Hello"; // gán giá trị cho hằng
-let result = 1 + 2 + 3 - 4;
-console.log(result); // 2
-// let x, y, z, t;
-// x = y = z = t = "hello";
-// console.log(x); // hello
-// console.log(y); // hello
-// console.log(z); // hello
-// console.log(t); // hello
-let n = 1;
-n = n + 5;
-// let n = 1;
-// n += 5;
+  // Biến ngoài hàm trong js
+  let message = "Hello from kungfutech.edu.vn";
+function sayHello() {
+  console.log(message);
+}
 
-// 5. Toán tử tăng một đơn, giảm một đơn vị
-let a = 1;
-a++;
+sayHello(); // Hello from kungfutech.edu.vn
 
-// lưu ý 
-let b = 2;
-let c = ++a;
-console.log(b); // 3
-console.log(c);
+// Thay đổi giá trị biến ngoài hàm từ thân hàm
+let message = "Hello from kungfutech.edu.vn";
+function sayHello() {
+  message = "Hi!";
+  console.log(message);
+}
 
-let e = 2;
-let g = a++;
-console.log(e); // 3
-console.log(g); // 2
+sayHello(); // Hi!
+console.log(message); // Hi!
 
+let message = "Hello from kungfutech.edu.vn";
+function sayHello() {
+  let message = "Hi!";
+  console.log(message);
+}
 
-// 6. Toán tử dấu phẩy
-let t = 1;
-let m = ((t = t + 1), t + 4);
-console.log(t); // 2
-console.log(m); // 6
+sayHello(); // Hi!
+console.log(message); // Hello from kungfutech.edu.vn
+
+// truyền tham số vào hàm
+function sayHello(message) {
+    console.log(message);
+  }
+  
+  sayHello("Hello!"); // Hello!
+  sayHello("Hi!"); // Hi!
+
+  let message = "Hello from kungfutech.edu.vn";
+function sayHello(message) {
+  message = "Hi!";
+  console.log(message);
+}
+
+sayHello(); // Hi!
+console.log(message); // Hello from kungfutech.edu.vn
+
+function sayHello(message, site) {
+    console.log(message + " from " + site);
+  }
+  
+  sayHello("Hello", "kungfutech.edu.vn"); // Hello from kungfutech.edu.vn
+
+  // giá trị tham số mặc định 
+  function sayHello(message, site) {
+    console.log(message + " from " + site);
+  }
+  
+  sayHello("Hello"); // Hello from undefined
+
+  function sayHello(message, site = "kungfutech.edu.vn") {
+    console.log(message + " from " + site);
+  }
+  
+  sayHello("Hello"); // Hello from kungfutech.edu.vn
+
+  function aFunction() {
+    // code
+  }
+  
+  function sayHello(message, site = aFunction()) {
+    console.log(message + " from " + site);
+  }
+
+  // Return 
+  function sum(a, b) {
+    return a + b;
+  }
+  
+  const result = sum(1, 2);
+  console.log(result); // 3
+
+  function sum(a, b) {
+    if (a === null || a === undefined) {
+      console.log("Tham số không hợp lệ!");
+      return;
+    }
+  
+    if (b === null || b === undefined) {
+      console.log("Tham số không hợp lệ!");
+      return;
+    }
+  
+    return a + b;
+  }
+  
+  const result1 = sum(); // Tham số không hợp lệ!
+
+  function sum(a, b) {
+    return;
+  }
+  
+  let r = sum(1, 2);
+  console.log(r); // undefined
+
+  function sum(a, b) {}
+
+let r = sum(1, 2);
+console.log(r); // undefined
+
+function sum(a, b) {
+    return;
+    a + b;
+  }
+  
+  const result = sum(1, 2);
+  console.log(result); // undefined
+
+  function sum(a, b) {
+    return a + b;
+  }
+  
+  const result = sum(1, 2);
+  console.log(result); // 3
+
+  // pure function 
+
+  function pureFunc(number, factor) {
+    return number * factor;
+  }
+  
+  let ret = pureFunc(2, 10);
+  console.log(ret); // 20
+
+  // non-pure function 
+  let factor = 10;
+
+function nonPureFunc(number) {
+  return number * factor;
+}
+
+let ret = nonPureFunc(2);
+console.log(ret); // 20
+
+factor = 11;
+ret = nonPureFunc(2);
+console.log(ret); // => 22
